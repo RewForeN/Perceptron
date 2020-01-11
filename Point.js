@@ -3,13 +3,11 @@ class Point {
 
 	constructor() {
 
-		console.log(width);
-		console.log(height);
-
 		this.x = 0;
 		this.y = 0;
 
-		while (Math.abs(this.x/width - this.y/height) < 0.02) {
+		// Genererate random x and y that is clear from the diagonal line
+		while (Math.abs(this.x/width - this.y/height) < 0.01) {
 			this.x = Math.random() * width;
 			this.y = Math.random() * height;
 		}
@@ -31,10 +29,10 @@ class Point {
 	show(guess) {
 
 		if (guess == this.label) {
-			fill(this.color);
+			fill(this.color); // Fill with normal color if guess was correct
 		}
 		else {
-			fill(60, 210, 90);
+			fill(60, 210, 90); // Fill green if the guess was wrong
 		}
 
 		noStroke();

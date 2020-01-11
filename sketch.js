@@ -1,5 +1,5 @@
 
-const numPoints = 800;
+const numPoints = 500;
 
 let ai;
 let points = [];
@@ -31,11 +31,20 @@ function draw() {
 	});
 
 	// Show the AI's current state
-	let x = ai.weights[0];
-	let y = ai.weights[1];
+	let y = ai.weights[0];
+	let x = ai.weights[1];
 	stroke(180, 60, 200);
 	strokeWeight(1);
-	line(0, 0, -y * 100, x * 100);
+	line(0, 0, -x * 100, y * 100);
+
+	// Show info of current state
+	fill(255);
+	noStroke();
+	textSize(14);
+	text("Target gradient = " + (-height/width).toFixed(3), 10, height - 62);
+	text("AI gradient = " + (y/x).toFixed(3), 10, height - 46);
+	text("weight[0] = " + y.toFixed(3), 10, height - 26);
+	text("weight[1] = " + x.toFixed(3), 10, height - 10);
 
 	// Train the AI
 	let curr = points[index];

@@ -4,7 +4,7 @@ class Perceptron {
 	constructor() {
 
 		this.lr = 0.1; // Learning rate
-		this.weights = [Math.random() * 2 - 1, Math.random() * 2 - 1];
+		this.weights = [Math.random() - 0.5, Math.random() - 0.5]; // Random starting weights
 
 	}
 
@@ -17,6 +17,7 @@ class Perceptron {
 
 		let sum = 0;
 
+		// Perform weighted summation
 		for (let i = 0; i < this.weights.length; i++) {
 			sum += inputs[i] * this.weights[i];
 		}
@@ -35,6 +36,7 @@ class Perceptron {
 		let guess = this.guess(inputs);
 		let error = target - guess;
 
+		// Correct the weights in terms of error
 		for (let i = 0; i < this.weights.length; i++) {
 			this.weights[i] += error * inputs[i] * this.lr;
 		}
